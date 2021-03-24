@@ -1,10 +1,10 @@
 package com.company;
 
-public class Items {
+public class Items implements Comparable <Items>{
 
     //Instance Variables
     private static int ID = 1;
-    private final int id = 0;
+    private final int id;
     private int amount;
     private double price;
     private String name;
@@ -15,6 +15,8 @@ public class Items {
         this.amount = amount;
         this.price = price;
         this.name = name;
+        this.id = ID;
+        ID++;
     }
 
     //Getter price
@@ -59,5 +61,13 @@ public class Items {
     //Setter name
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Items item) {
+        double price = ((Items) item).getPrice();
+        double result = this.getPrice() - price;
+        int r = (int) result;
+        return r;
     }
 }

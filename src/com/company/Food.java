@@ -1,5 +1,9 @@
 package com.company;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Food extends Items {
 
     // Instance Variables
@@ -29,5 +33,15 @@ public class Food extends Items {
 
     public void setVegetarian(boolean vegetarian) {
         this.vegetarian = vegetarian;
+    }
+
+    public int timeBeforeExpire() throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        Date sysDate = new Date();
+        String data = this.getExpirationDate();
+        Date date = format.parse(data);
+        int difference = (int) (date.getTime() - sysDate.getTime());
+        int daysBetween = (difference / (1000*60*60*24)) + 1;
+        return daysBetween;
     }
 }
