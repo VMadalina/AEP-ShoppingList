@@ -33,18 +33,5 @@ public class Main {
 //
 //        cart.printCart();
 
-//        cart.removeFromCart(cart.findId(2));
-//        cart.removeFromCart(cart.findId(5));
-//        cart.removeFromCart(cart.findId(9));
-//        cart.removeFromCart(cart.findId(1));
-//
-//        cart.printCart();
-
-//        Food food = new Food("lapte", 6.4d, 2, "29.03.2021", false);
-//        System.out.println(food.timeBeforeExpire());
-//
-//        Books item = new Books("name", 10.1, 3, "author", "SF");
-//        item.addAmount();
-//        System.out.println(item.getAmount());
     }
 }

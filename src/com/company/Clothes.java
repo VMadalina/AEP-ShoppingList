@@ -9,11 +9,6 @@ public class Clothes extends Items {
     private String color;
 
     //Constructor
-    public Clothes(String name, double price, int amount, String color) {
-        super(name, price, amount);
-        this.color = color;
-    }
-
     public Clothes() {}
 
     //Getter size

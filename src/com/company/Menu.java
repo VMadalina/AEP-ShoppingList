@@ -144,15 +144,16 @@ public class Menu {
                     cart.removeFromCart(cart.findId(id));
                     System.out.println("Your item was remove with succes!");
                 }
-                case 7 -> //Remove
+                case 7 -> //show cart
                         cart.printCart();
-                case 8 -> {
+                case 8 -> { //change amount
                     cart.printCart();
                     System.out.println("Write the ID of the item whose amount you want to modify.");
                     int id = scanner.nextInt();
                     cart.changeAmount(cart.findId(id));
+                    System.out.println("Your amount was modified.");
                 }
-                case 9 -> {
+                case 9 -> { //Exit
                     System.out.println("Bye! :) ");
                     option = 10;
                 }

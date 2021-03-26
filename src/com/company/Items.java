@@ -72,8 +72,7 @@ public class Items implements Comparable <Items>{
     public int compareTo(Items item) {
         double price = item.getPrice();
         double result = this.getPrice() - price;
-        int r = (int) result;
-        return r;
+        return (int) result;
     }
 
     public void addAmount() {
