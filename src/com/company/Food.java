@@ -41,7 +41,6 @@ public class Food extends Items {
         String data = this.getExpirationDate();
         Date date = format.parse(data);
         int difference = (int) (date.getTime() - sysDate.getTime());
-        int daysBetween = (difference / (1000*60*60*24)) + 1;
-        return daysBetween;
+        return (difference / (1000*60*60*24)) + 1;
     }
 }

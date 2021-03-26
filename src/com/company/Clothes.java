@@ -5,23 +5,24 @@ import java.util.Scanner;
 public class Clothes extends Items {
 
     // Instance Variables
-    private char size; // XS, S, M, L, XL  etc.
+    private String size; // XS, S, M, L, XL  etc.
     private String color;
 
     //Constructor
-    public Clothes(String name, double price, int amount, char size, String color) {
+    public Clothes(String name, double price, int amount, String color) {
         super(name, price, amount);
-        this.size = size;
         this.color = color;
     }
 
+    public Clothes() {}
+
     //Getter size
-    public char getSize() {
+    public String getSize() {
         return size;
     }
 
     //Setter size
-    public void setSize(char size) {
+    public void setSize(String size) {
         this.size = size;
     }
 

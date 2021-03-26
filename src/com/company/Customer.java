@@ -3,28 +3,22 @@ package com.company;
 public class Customer implements User {
 
     // Instance Variables
-    private int id;
-    private String username;
-    private String password;
-    private String email;
+    private final String username;
+    private final String password;
+    private final String email;
 
     //Constructor
-    public Customer(int id, String username, String password, String email) {
-        this.id = id;
+    public Customer(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
-    }
-
-    //Getter ID
-    public int getId() {
-        return id;
     }
 
     //Getter username
     public String getUsername() {
         return username;
     }
+
 
     //Getter password
     public String getPassword() {
@@ -36,4 +30,11 @@ public class Customer implements User {
         return email;
     }
 
+
+    public boolean checkPassword(String password) {
+        if(password.matches("[A-Z][a-z]{5,}+[1-9]+"))
+            return true;
+        else
+            return false;
+    }
 }

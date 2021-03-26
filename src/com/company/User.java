@@ -1,8 +1,11 @@
 package com.company;
 
 public interface User {
+    String password = "";
+    String username = "";
 
     String getPassword();
     String getUsername();
-    int getId();
+    String getEmail();
+    boolean checkPassword(String password);
 }

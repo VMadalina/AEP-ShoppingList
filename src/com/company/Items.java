@@ -19,6 +19,11 @@ public class Items implements Comparable <Items>{
         ID++;
     }
 
+    public Items() {
+        this.id = ID;
+        ID++;
+    }
+
     //Getter price
     public double getPrice() {
         return price;
@@ -65,9 +70,19 @@ public class Items implements Comparable <Items>{
 
     @Override
     public int compareTo(Items item) {
-        double price = ((Items) item).getPrice();
+        double price = item.getPrice();
         double result = this.getPrice() - price;
         int r = (int) result;
         return r;
+    }
+
+    public void addAmount() {
+        int amount = this.getAmount() + 1;
+        this.setAmount(amount);
+    }
+
+    public void substractAmount() {
+        int amount = this.getAmount() - 1;
+        this.setAmount(amount);
     }
 }
