@@ -31,6 +31,7 @@ public class Clothes extends Items {
         this.color = color;
     }
 
+    //Function to find the size for your clothes in function of genre and dimension (chest, waist, hip)
     public void sizeHelper(int chest, int waist, int hip) {
         System.out.println("Choose your genre (F/M): ");
         Scanner scanner = new Scanner(System.in);

@@ -35,6 +35,7 @@ public class Food extends Items {
         this.vegetarian = vegetarian;
     }
 
+    //Function to calculate in how many days the product expires
     public int timeBeforeExpire() throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         Date sysDate = new Date();

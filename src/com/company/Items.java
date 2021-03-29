@@ -75,11 +75,13 @@ public class Items implements Comparable <Items>{
         return (int) result;
     }
 
+    //Function to modify the amount with +1
     public void addAmount() {
         int amount = this.getAmount() + 1;
         this.setAmount(amount);
     }
 
+    //Function to modify the amount with -1
     public void substractAmount() {
         int amount = this.getAmount() - 1;
         this.setAmount(amount);
