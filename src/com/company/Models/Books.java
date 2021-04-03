@@ -1,7 +1,6 @@
-package com.company;
+package com.company.Models;
 
 public class Books extends Items {
-
     // Instance Variables
     private String author;
     private String genre;

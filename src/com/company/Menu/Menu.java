@@ -1,10 +1,11 @@
-package com.company;
+package com.company.Menu;
+
+import com.company.Models.*;
 
 import java.text.ParseException;
 import java.util.Scanner;
 
 public class Menu {
-
     public Menu() {
     }
 
@@ -107,10 +108,10 @@ public class Menu {
                     System.out.println("amount: ");
                     amount = scanner.nextInt();
 
-                    System.out.println("expiration date: ");
+                    System.out.println("expiration date(dd.mm.yyyy): ");
                     String expirationDate = scanner.next();
 
-                    System.out.println("vegetarian product: ");
+                    System.out.println("vegetarian product(true/false): ");
                     boolean vegetarian = scanner.nextBoolean();
 
                     Food food = new Food(name, price, amount, expirationDate,vegetarian);
@@ -127,7 +128,7 @@ public class Menu {
                     System.out.println("amount: ");
                     amount = scanner.nextInt();
 
-                    System.out.println("caffeine: ");
+                    System.out.println("caffeine(true/false): ");
                     boolean caffeine = scanner.nextBoolean();
 
                     System.out.println("alcohol (%): ");
@@ -161,4 +162,5 @@ public class Menu {
         }
         scanner.close();
     }
+
 }

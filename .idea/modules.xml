@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Shopping_list.iml" filepath="$PROJECT_DIR$/Shopping_list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AEP-ShoppingList.iml" filepath="$PROJECT_DIR$/AEP-ShoppingList.iml" />
     </modules>
   </component>
 </project>

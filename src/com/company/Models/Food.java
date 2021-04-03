@@ -1,11 +1,10 @@
-package com.company;
+package com.company.Models;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Food extends Items {
-
     // Instance Variables
     private String expirationDate;
     private boolean vegetarian;

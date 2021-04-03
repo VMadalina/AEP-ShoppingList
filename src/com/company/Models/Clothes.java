@@ -1,9 +1,8 @@
-package com.company;
+package com.company.Models;
 
 import java.util.Scanner;
 
 public class Clothes extends Items {
-
     // Instance Variables
     private String size; // XS, S, M, L, XL  etc.
     private String color;

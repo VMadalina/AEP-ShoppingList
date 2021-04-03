@@ -1,7 +1,6 @@
-package com.company;
+package com.company.Models;
 
 public class Drinks extends Items {
-
     private float alcVol;
     private int volume;
     private boolean caffeine;
@@ -40,5 +39,4 @@ public class Drinks extends Items {
     public void setCaffeine(boolean caffeine) {
         this.caffeine = caffeine;
     }
-
 }

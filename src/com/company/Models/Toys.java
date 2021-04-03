@@ -1,7 +1,6 @@
-package com.company;
+package com.company.Models;
 
 public class Toys extends Items {
-
     // Instance Variables
     private int minimAge;
     private String material;

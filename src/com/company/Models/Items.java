@@ -1,7 +1,6 @@
-package com.company;
+package com.company.Models;
 
 public class Items implements Comparable <Items>{
-
     //Instance Variables
     private static int ID = 1;
     private final int id;
