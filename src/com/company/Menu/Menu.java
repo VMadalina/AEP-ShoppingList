@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Menu {
     private static Menu menu;
 
-    Menu() {
+    private Menu() {
     }
 
     public static Menu getInstance() {
@@ -25,6 +25,34 @@ public class Menu {
         for (Items items : inventory) {
             System.out.println(items.getName() + ", " + items.getAmount() + ", " + items.getPrice());
         }
+    }
+
+    public void totalInventory(ArrayList<Items> inventory) {
+        double totalFinal = 0;
+        double totalBooks = 0;
+        double totalFood = 0;
+        double totalDrinks = 0;
+        double totalClothes = 0;
+        double totalToys = 0;
+        for (int i = 0; i < inventory.size(); i++) {
+            if(inventory.get(i).getClass().toString().equals("class com.company.Models.Clothes")) {
+                totalClothes = totalClothes + inventory.get(i).getAmount()*inventory.get(i).getPrice();
+            }
+            else if (inventory.get(i).getClass().toString().equals("class com.company.Models.Toys")) {
+                totalToys = totalToys + inventory.get(i).getAmount()*inventory.get(i).getPrice();
+            }
+            else if (inventory.get(i).getClass().toString().equals("class com.company.Models.Drinks")) {
+                totalDrinks = totalDrinks + inventory.get(i).getAmount()*inventory.get(i).getPrice();
+            }
+            else if (inventory.get(i).getClass().toString().equals("class com.company.Models.Food")) {
+                totalFood = totalFood + inventory.get(i).getAmount()*inventory.get(i).getPrice();
+            }
+            else if (inventory.get(i).getClass().toString().equals("class com.company.Models.Books")) {
+                totalBooks = totalBooks + inventory.get(i).getAmount()*inventory.get(i).getPrice();
+            }
+        }
+        totalFinal = totalBooks + totalClothes + totalDrinks + totalFood + totalToys;
+        Write_totals.writeTotals(totalBooks,totalToys,totalClothes,totalDrinks,totalFood,totalFinal);
     }
 
     public void menu() throws ParseException {
@@ -214,6 +242,7 @@ public class Menu {
                     System.out.println("Bye! :) ");
                     option = 12;
                     Write_audit.writeAudit("Exit");
+                    totalInventory(inventory);
                 }
                 case 11 -> { //print inventory with the basic information -> name, price(per piece), amount
                     printInventory(inventory);
