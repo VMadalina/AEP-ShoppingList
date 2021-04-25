@@ -1,0 +1,3 @@
+﻿Name,price,amount ,expiration_date,vegetarian
+Cheese,13.99,1,29.05.2021,false
+Butter,10.6,2,10.05.2021,true

@@ -1,0 +1,5 @@
+﻿Name,Price,Amount,alcohol,volume,caffeine
+Beer,5.99,6,4.5,500,false
+wine,26.6,1,12.5,1000,false
+Coca-cola,5.99,6,0.0,250,false
+Fanta,6.99,1,0.0,500,false
