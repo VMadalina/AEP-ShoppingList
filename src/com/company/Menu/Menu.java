@@ -9,7 +9,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    public Menu() {
+    private static Menu menu;
+
+    Menu() {
+    }
+
+    public static Menu getInstance() {
+        if(menu == null) {
+            menu = new Menu();
+        }
+        return menu;
     }
 
     public void printInventory(ArrayList<Items> inventory) {
@@ -84,6 +93,8 @@ public class Menu {
 
                     cart.addToCart(new Toys(name, price, amount, genre, material, age));
                     Write_toys.writeToys(name, price, amount, genre, material, age);
+                    Write_audit.writeAudit("Add toy to cart");
+
                 }
                 case 3 -> { //clothes
                     Clothes clothes = new Clothes();
@@ -120,6 +131,8 @@ public class Menu {
                     clothes.setAmount(amount);
                     cart.addToCart(clothes);
                     Write_clothes.writeClothes(name, size, color, price, amount);
+                    Write_audit.writeAudit("Add clothes to cart");
+
                 }
                 case 4 -> { //Food
                     System.out.println("name: ");
@@ -142,6 +155,7 @@ public class Menu {
                     cart.addToCart(food);
                     System.out.println("This product will expire in " + food.timeBeforeExpire() + " days.");
                     Write_food.writeFood(name, price, amount, expirationDate,vegetarian);
+                    Write_audit.writeAudit("Add food to cart");
                 }
                 case 5 -> { //Drinks
                     System.out.println("name: ");
@@ -164,24 +178,29 @@ public class Menu {
                     int volume = scanner.nextInt();
                     cart.addToCart(new Drinks(name, price, amount, alcohol, volume, caffeine));
                     Write_drinks.writeDrinks(name, price, amount, alcohol, volume,  caffeine);
+                    Write_audit.writeAudit("Add drink to cart");
                 }
                 case 6 -> { //Remove
                     cart.printCart();
                     System.out.println("To remove from cart write the id in the console.");
                     int id = scanner.nextInt();
                     cart.removeFromCart(cart.findId(id));
-                    System.out.println("Your item was remove with succes!");
+                    System.out.println("Your item was remove with success!");
+                    Write_audit.writeAudit("Remove an item from cart");
                 }
-                case 7 -> //show cart
-                        cart.printCart();
+                case 7 -> { //show cart
+                    cart.printCart();
+                    Write_audit.writeAudit("Show the cart");
+                }
                 case 8 -> { //change amount
                     cart.printCart();
                     System.out.println("Write the ID of the item whose amount you want to modify.");
                     int id = scanner.nextInt();
                     cart.changeAmount(cart.findId(id));
                     System.out.println("Your amount was modified.");
+                    Write_audit.writeAudit("Change amount");
                 }
-                case 9 -> { //Finish shopping sesion
+                case 9 -> { //Finish shopping session => empty cart
                     System.out.println("Thank you for choosing our services! Have a great day! :) ");
                     cart = new Cart();
                     Read_books.ReadBook(inventory);
@@ -189,12 +208,17 @@ public class Menu {
                     Read_drinks.ReadDrinks(inventory);
                     Read_food.ReadFoof(inventory);
                     Read_toys.ReadToys(inventory);
+                    Write_audit.writeAudit("Submit the order and finish empty the cart");
                 }
                 case 10 -> { //Exit
                     System.out.println("Bye! :) ");
                     option = 12;
+                    Write_audit.writeAudit("Exit");
                 }
-                case 11 -> printInventory(inventory);
+                case 11 -> { //print inventory with the basic information -> name, price(per piece), amount
+                    printInventory(inventory);
+                    Write_audit.writeAudit("Submit the order and finish empty the cart");
+                }
             }
         }
         scanner.close();
