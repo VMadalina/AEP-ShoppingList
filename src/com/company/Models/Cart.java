@@ -18,6 +18,11 @@ public class Cart implements Shopping_list {
         this.items = new ArrayList<>();
     }
 
+
+    public List<Items> getItems() {
+        return items;
+    }
+
     //Getter total
     @Override
     public double getTotal() {

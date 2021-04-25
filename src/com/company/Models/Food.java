@@ -36,7 +36,7 @@ public class Food extends Items {
 
     //Function to calculate in how many days the product expires
     public int timeBeforeExpire() throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd.mm.yyyy");
         Date sysDate = new Date();
         String data = this.getExpirationDate();
         Date date = format.parse(data);

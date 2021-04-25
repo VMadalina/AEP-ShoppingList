@@ -7,7 +7,7 @@ public class Toys extends Items {
     private String genre; //Boys, Girls, Universal
 
     //Constructor
-    public Toys(String name, double price, int amount, int minimAge, String material, String genre) {
+    public Toys(String name, double price, int amount, String genre, String material,  int minimAge) {
         super(name, price, amount);
         this.minimAge = minimAge;
         this.material = material;

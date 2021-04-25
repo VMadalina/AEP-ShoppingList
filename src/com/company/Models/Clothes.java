@@ -7,8 +7,14 @@ public class Clothes extends Items {
     private String size; // XS, S, M, L, XL  etc.
     private String color;
 
-    //Constructor
+    //Constructors
     public Clothes() {}
+
+    public Clothes(String name, String size, String color, double price, int amount) {
+        super(name, price, amount);
+        this.size = size;
+        this.color = color;
+    }
 
     //Getter size
     public String getSize() {

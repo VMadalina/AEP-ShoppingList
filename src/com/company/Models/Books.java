@@ -6,7 +6,7 @@ public class Books extends Items {
     private String genre;
 
     //Constructor
-    public Books(String name, double price, int amount, String author, String genre) {
+    public Books(String name, String author, double price, int amount, String genre) {
         super(name, price, amount);
         this.author = author;
         this.genre = genre;
