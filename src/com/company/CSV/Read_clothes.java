@@ -18,7 +18,7 @@ public class Read_clothes {
             String line = bufferedReader.readLine(); //skip the first line
             while ((line = bufferedReader.readLine()) != null) {
                 String[] strings = line.split(",");
-                items.add(new Clothes(strings[0],strings[1], strings[2], Double.parseDouble(strings[3]), Integer.parseInt(strings[4])));
+                items.add(new Clothes(strings[0], strings[1], strings[2], Double.parseDouble(strings[3]), Integer.parseInt(strings[4])));
             }
         }
         catch (IOException e) {

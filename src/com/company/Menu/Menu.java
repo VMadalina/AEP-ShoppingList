@@ -231,11 +231,6 @@ public class Menu {
                 case 9 -> { //Finish shopping session => empty cart
                     System.out.println("Thank you for choosing our services! Have a great day! :) ");
                     cart = new Cart();
-                    Read_books.ReadBook(inventory);
-                    Read_clothes.ReadClothes(inventory);
-                    Read_drinks.ReadDrinks(inventory);
-                    Read_food.ReadFoof(inventory);
-                    Read_toys.ReadToys(inventory);
                     Write_audit.writeAudit("Submit the order and finish empty the cart");
                 }
                 case 10 -> { //Exit
