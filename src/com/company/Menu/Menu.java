@@ -1,6 +1,7 @@
 package com.company.Menu;
 
 import com.company.CSV.*;
+import com.company.DB.*;
 import com.company.Models.*;
 import com.company.Services.Write_audit;
 
@@ -23,32 +24,35 @@ public class Menu {
 
     public void printInventory(ArrayList<Items> inventory) {
         for (Items items : inventory) {
-            System.out.println(items.getName() + ", " + items.getAmount() + ", " + items.getPrice());
+            System.out.println("NUME PRODUS:" + items.getName() + ", CANTITATE: " + items.getAmount() + ", PRET: " + items.getPrice() + ", ID: " + items.getId());
         }
     }
 
+    public static void setMaxID(ArrayList<Items> inventory) {
+        int Max_id = 0;
+        for (Items items : inventory) {
+            if(Max_id < items.getId()) {
+                Max_id = items.getId();
+            }
+        }
+        Max_id--;
+        Items.setId(Max_id);
+    }
+
     public void totalInventory(ArrayList<Items> inventory) {
-        double totalFinal = 0;
+        double totalFinal;
         double totalBooks = 0;
         double totalFood = 0;
         double totalDrinks = 0;
         double totalClothes = 0;
         double totalToys = 0;
-        for (int i = 0; i < inventory.size(); i++) {
-            if(inventory.get(i).getClass().toString().equals("class com.company.Models.Clothes")) {
-                totalClothes = totalClothes + inventory.get(i).getAmount()*inventory.get(i).getPrice();
-            }
-            else if (inventory.get(i).getClass().toString().equals("class com.company.Models.Toys")) {
-                totalToys = totalToys + inventory.get(i).getAmount()*inventory.get(i).getPrice();
-            }
-            else if (inventory.get(i).getClass().toString().equals("class com.company.Models.Drinks")) {
-                totalDrinks = totalDrinks + inventory.get(i).getAmount()*inventory.get(i).getPrice();
-            }
-            else if (inventory.get(i).getClass().toString().equals("class com.company.Models.Food")) {
-                totalFood = totalFood + inventory.get(i).getAmount()*inventory.get(i).getPrice();
-            }
-            else if (inventory.get(i).getClass().toString().equals("class com.company.Models.Books")) {
-                totalBooks = totalBooks + inventory.get(i).getAmount()*inventory.get(i).getPrice();
+        for (Items items : inventory) {
+            switch (items.getClass().toString()) {
+                case "class com.company.Models.Clothes" -> totalClothes = totalClothes + items.getAmount() * items.getPrice();
+                case "class com.company.Models.Toys" -> totalToys = totalToys + items.getAmount() * items.getPrice();
+                case "class com.company.Models.Drinks" -> totalDrinks = totalDrinks + items.getAmount() * items.getPrice();
+                case "class com.company.Models.Food" -> totalFood = totalFood + items.getAmount() * items.getPrice();
+                case "class com.company.Models.Books" -> totalBooks = totalBooks + items.getAmount() * items.getPrice();
             }
         }
         totalFinal = totalBooks + totalClothes + totalDrinks + totalFood + totalToys;
@@ -68,11 +72,17 @@ public class Menu {
         double price;
         int amount;
         ArrayList<Items> inventory = new ArrayList<>();
-        Read_books.ReadBook(inventory);
-        Read_clothes.ReadClothes(inventory);
-        Read_drinks.ReadDrinks(inventory);
-        Read_food.ReadFoof(inventory);
-        Read_toys.ReadToys(inventory);
+//        Read_books.ReadBook(inventory);
+//        Read_clothes.ReadClothes(inventory);
+//        Read_drinks.ReadDrinks(inventory);
+//        Read_food.ReadFoof(inventory);
+//        Read_toys.ReadToys(inventory);
+        Load_InventoryDB.LoadBooks(inventory);
+        Load_InventoryDB.LoadFood(inventory);
+        Load_InventoryDB.LoadClothes(inventory);
+        Load_InventoryDB.LoadToys(inventory);
+        Load_InventoryDB.LoadDrinks(inventory);
+        setMaxID(inventory);
         while (option >= -1 && option <=11) {
             System.out.println("Your choice: ");
             option = scanner.nextInt();
@@ -95,8 +105,11 @@ public class Menu {
                     scanner.skip("\n");
                     String genre = scanner.nextLine();
 
-                    cart.addToCart(new Books(name, author, price, amount, genre));
-                    Write_books.writeBook(name, author, price, amount, genre);
+                    Books book = new Books(name, author, price, amount, genre);
+                    cart.addToCart(book);
+                    Add_InventoryDB.AddBook(book);
+                    Show_InventoryDB.ShowBookDB();
+                    //Write_books.writeBook(name, author, price, amount, genre);
                     Write_audit.writeAudit("Add book to cart");
                 }
                 case 2 -> { //toys
@@ -119,8 +132,11 @@ public class Menu {
                     System.out.println("age: ");
                     int age = scanner.nextInt();
 
-                    cart.addToCart(new Toys(name, price, amount, genre, material, age));
-                    Write_toys.writeToys(name, price, amount, genre, material, age);
+                    Toys toys = new Toys(name, price, amount, genre, material, age);
+                    cart.addToCart(toys);
+                    //Write_toys.writeToys(name, price, amount, genre, material, age);
+                    Add_InventoryDB.AddToys(toys);
+                    Show_InventoryDB.ShowToysDB();
                     Write_audit.writeAudit("Add toy to cart");
 
                 }
@@ -158,7 +174,9 @@ public class Menu {
                     clothes.setPrice(price);
                     clothes.setAmount(amount);
                     cart.addToCart(clothes);
-                    Write_clothes.writeClothes(name, size, color, price, amount);
+                    //Write_clothes.writeClothes(name, size, color, price, amount);
+                    Add_InventoryDB.AddClothes(clothes);
+                    Show_InventoryDB.ShowClothesDB();
                     Write_audit.writeAudit("Add clothes to cart");
 
                 }
@@ -177,12 +195,14 @@ public class Menu {
                     String expirationDate = scanner.next();
 
                     System.out.println("vegetarian product(true/false): ");
-                    boolean vegetarian = scanner.nextBoolean();
+                    String vegetarian = scanner.next();
 
                     Food food = new Food(name, price, amount, expirationDate,vegetarian);
                     cart.addToCart(food);
                     System.out.println("This product will expire in " + food.timeBeforeExpire() + " days.");
-                    Write_food.writeFood(name, price, amount, expirationDate,vegetarian);
+                    //Write_food.writeFood(name, price, amount, expirationDate,vegetarian);
+                    Add_InventoryDB.AddFood(food);
+                    Show_InventoryDB.ShowFoodDB();
                     Write_audit.writeAudit("Add food to cart");
                 }
                 case 5 -> { //Drinks
@@ -197,15 +217,18 @@ public class Menu {
                     amount = scanner.nextInt();
 
                     System.out.println("caffeine(true/false): ");
-                    boolean caffeine = scanner.nextBoolean();
+                    String caffeine = scanner.next();
 
                     System.out.println("alcohol (%): ");
                     float alcohol = scanner.nextFloat();
 
                     System.out.println("volume (ml): ");
                     int volume = scanner.nextInt();
-                    cart.addToCart(new Drinks(name, price, amount, alcohol, volume, caffeine));
-                    Write_drinks.writeDrinks(name, price, amount, alcohol, volume,  caffeine);
+                    Drinks drinks = new Drinks(name, price, amount, alcohol, volume, caffeine);
+                    cart.addToCart(drinks);
+                    //Write_drinks.writeDrinks(name, price, amount, alcohol, volume,  caffeine);
+                    Add_InventoryDB.AddDrinks(drinks);
+                    Show_InventoryDB.ShowDrinksDB();
                     Write_audit.writeAudit("Add drink to cart");
                 }
                 case 6 -> { //Remove
@@ -214,6 +237,7 @@ public class Menu {
                     int id = scanner.nextInt();
                     cart.removeFromCart(cart.findId(id));
                     System.out.println("Your item was remove with success!");
+                    Delete_InventoryDB.Delete(inventory, id);
                     Write_audit.writeAudit("Remove an item from cart");
                 }
                 case 7 -> { //show cart
@@ -226,6 +250,7 @@ public class Menu {
                     int id = scanner.nextInt();
                     cart.changeAmount(cart.findId(id));
                     System.out.println("Your amount was modified.");
+                    Update_InventoryDB.ChangeAmount(inventory, id, cart.findId(id).getAmount(), cart.findId(id).getClass().toString());
                     Write_audit.writeAudit("Change amount");
                 }
                 case 9 -> { //Finish shopping session => empty cart

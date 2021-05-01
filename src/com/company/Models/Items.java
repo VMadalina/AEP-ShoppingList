@@ -2,7 +2,7 @@ package com.company.Models;
 
 public class Items implements Comparable <Items>{
     //Instance Variables
-    private static int ID = 1;
+    private static int ID;
     private final int id;
     private int amount;
     private double price;
@@ -14,13 +14,13 @@ public class Items implements Comparable <Items>{
         this.amount = amount;
         this.price = price;
         this.name = name;
-        this.id = ID;
         ID++;
+        this.id = ID;
     }
 
     public Items() {
-        this.id = ID;
         ID++;
+        this.id = ID;
     }
 
     //Getter price
@@ -48,12 +48,8 @@ public class Items implements Comparable <Items>{
         return id;
     }
 
-    public static int getID() {
-        return ID;
-    }
-
     //Setter ID
-    public static void setID(int ID) {
+    public static void setId(int ID) {
         Items.ID = ID;
     }
 

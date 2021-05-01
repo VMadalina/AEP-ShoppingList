@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/com/company/DB/Add_InventoryDB.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/com/company/DB/Delete_InventoryDB.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/com/company/DB/Load_InventoryDB.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/com/company/DB/Show_InventoryDB.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/com/company/DB/Update_InventoryDB.java" dialect="GenericSQL" />
+  </component>
+</project>

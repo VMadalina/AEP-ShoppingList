@@ -7,10 +7,10 @@ import java.util.Date;
 public class Food extends Items {
     // Instance Variables
     private String expirationDate;
-    private boolean vegetarian;
+    private String vegetarian;
 
     //Constructor
-    public Food(String name, double price, int amount, String expirationDate, boolean vegetarian) {
+    public Food(String name, double price, int amount, String expirationDate, String vegetarian) {
         super(name, price, amount);
         this.expirationDate = expirationDate;
         this.vegetarian = vegetarian;
@@ -26,11 +26,11 @@ public class Food extends Items {
     }
 
     //Getter and setter for vegetarian
-    public boolean isVegetarian() {
+    public String isVegetarian() {
         return vegetarian;
     }
 
-    public void setVegetarian(boolean vegetarian) {
+    public void setVegetarian(String vegetarian) {
         this.vegetarian = vegetarian;
     }
 

@@ -18,7 +18,7 @@ public class Read_drinks {
             String line = bufferedReader.readLine(); //skip the first line
             while ((line = bufferedReader.readLine()) != null) {
                 String[] strings = line.split(",");
-                items.add(new Drinks(strings[0], Double.parseDouble(strings[1]), Integer.parseInt(strings[2]), Float.parseFloat(strings[3]), Integer.parseInt(strings[4]), Boolean.parseBoolean(strings[5])));
+                items.add(new Drinks(strings[0], Double.parseDouble(strings[1]), Integer.parseInt(strings[2]), Float.parseFloat(strings[3]), Integer.parseInt(strings[4]), strings[5]));
             }
         } catch (IOException e) {
             e.printStackTrace();

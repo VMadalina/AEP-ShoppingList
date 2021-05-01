@@ -1,12 +1,12 @@
 package com.company.Models;
 
 public class Drinks extends Items {
-    private float alcVol;
+    private double alcVol;
     private int volume;
-    private boolean caffeine;
+    private String caffeine;
 
     //Constructor
-    public Drinks(String name, double price, int amount, float alcVol, int volume, boolean caffeine) {
+    public Drinks(String name, double price, int amount, float alcVol, int volume, String caffeine) {
         super(name, price, amount);
         this.alcVol = alcVol;
         this.volume = volume;
@@ -14,7 +14,7 @@ public class Drinks extends Items {
     }
 
     //Getter and setter for alcohol volume
-    public float getAlcVol() {
+    public double getAlcVol() {
         return alcVol;
     }
 
@@ -32,11 +32,11 @@ public class Drinks extends Items {
     }
 
     //Getter and setter for caffeine
-    public boolean isCaffeine() {
+    public String isCaffeine() {
         return caffeine;
     }
 
-    public void setCaffeine(boolean caffeine) {
+    public void setCaffeine(String caffeine) {
         this.caffeine = caffeine;
     }
 }
